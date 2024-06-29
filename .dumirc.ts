@@ -8,7 +8,9 @@ import { version } from './package.json';
 
 export default defineConfig({
   plugins: ['dumi-plugin-color-chunk'],
-  manifest: {},
+  manifest: {
+    basePath: '/mirror/ant-design-5',
+  },
   conventionRoutes: {
     // to avoid generate routes for .dumi/pages/index/components/xx
     exclude: [/index\/components\//],
@@ -187,4 +189,6 @@ export default defineConfig({
       content: fs.readFileSync(path.join(__dirname, '.dumi', 'scripts', 'clarity.js')).toString(),
     },
   ],
+  base: '/mirror/ant-design-5',
+  publicPath: '/mirror/ant-design-5/',
 });
