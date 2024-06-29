@@ -4,7 +4,7 @@ name: Tag Sites
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 permissions:
