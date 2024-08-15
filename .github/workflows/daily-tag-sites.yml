@@ -115,7 +115,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
       - name: replace path
         run: |
-          find ./_site -type f -name "*.js" -exec sed -i 's/href="\//href="\/mirror\/ant-design-5\//g' {} +
+          find ./_site -type f \( -name "*.html" -or -name "*.js" \) -exec sed -i 's/href="\//href="\/mirror\/ant-design-5\//g' {} +
       - name: zip zite
         uses: montudor/action-zip@v1
         with:
