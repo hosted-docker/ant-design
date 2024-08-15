@@ -40,10 +40,10 @@ jobs:
       - name: GitHub Sync to Upstream Repository
         uses: dabreadman/sync-upstream-repo@v1.3.0
         with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
           downstream_branch: ${{ env.DOWNSTREAM_BRANCH }}
-          token: ${{ env.WORKFLOW_TOKEN }}
           fetch_args: ${{ env.FETCH_ARGS }}
           merge_args: ${{ env.MERGE_ARGS }}
           push_args: ${{ env.PUSH_ARGS }}
