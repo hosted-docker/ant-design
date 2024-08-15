@@ -7,7 +7,7 @@ env:
   UPSTREAM_URL: "https://github.com/ant-design/ant-design.git"
   # Required, token to authenticate bot, could use ${{ secrets.GITHUB_TOKEN }}
   # Over here, we use a PAT instead to authenticate workflow file changes.
-  WORKFLOW_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
   # Optional, defaults to main
   UPSTREAM_BRANCH: "master"
   # Optional, defaults to UPSTREAM_BRANCH
@@ -40,7 +40,7 @@ jobs:
       - name: GitHub Sync to Upstream Repository
         uses: dabreadman/sync-upstream-repo@v1.3.0
         with:
-          token: ${{ secrets.WORKFLOW_TOKEN }}
+          token: ${{ env.WORKFLOW_TOKEN }}
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
           downstream_branch: ${{ env.DOWNSTREAM_BRANCH }}
