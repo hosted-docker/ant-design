@@ -32,7 +32,8 @@ on:
 
 permissions:
   contents: write
-
+  actions: write
+  
 jobs:
   sync-upstream:
     runs-on: ubuntu-latest
