@@ -106,7 +106,7 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
       - name: add content path
         run: |
-          sed -i 's/manifest: {}/manifest: {basePath: "\/mirror\/ant-design-5\/",}, base: "\/mirror\/ant-design-5\/", publicPath: "\/mirror\/ant-design-5\/"/' .dumirc.ts
+          sed -i 's/manifest: {}/runtimePublicPath: {}, manifest: {basePath: "\/mirror\/ant-design-5\/",}, base: "\/mirror\/ant-design-5\/", publicPath: "\/mirror\/ant-design-5\/"/' .dumirc.ts
 
       - name: npm run site
         id: site
