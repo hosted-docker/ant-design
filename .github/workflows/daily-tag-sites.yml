@@ -33,7 +33,7 @@ on:
 permissions:
   contents: write
   actions: write
-  
+
 jobs:
   sync-upstream:
     runs-on: ubuntu-latest
@@ -104,19 +104,20 @@ jobs:
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
-      #- name: add content path
-      #  run: |
-      #    sed -i 's/manifest: {}/runtimePublicPath: {}, manifest: {basePath: "\/mirror\/ant-design-5\/",}, base: "\/mirror\/ant-design-5\/", publicPath: "\/mirror\/ant-design-5\/"/' .dumirc.ts
+      - name: add content path
+        run: |
+          sed -i 's/manifest: {}/runtimePublicPath: {}, manifest: {basePath: "\/mirror\/ant-design-5\/",}, base: "\/mirror\/ant-design-5\/", publicPath: "\/mirror\/ant-design-5\/"/' .dumirc.ts
+          sed -i 's/"devtool": false/"devtool": false,  "publicPath": "\/mirror\/ant-design-5\/"/' mako.config.json
 
       - name: npm run site
         id: site
         run: npm run site
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
-      - name: replace path
-        run: |
-          find ./_site -type f \( -name "*.html" -or -name "*.js" \) -exec sed -i 's/href="\//href="\/mirror\/ant-design-5\//g' {} +
-          find ./_site -type f \( -name "*.html" -or -name "*.js" \) -exec sed -i 's/src="\/umi/src="\/mirror\/ant-design-5\/umi/g' {} +
+      # - name: replace path
+      #   run: |
+      #     find ./_site -type f \( -name "*.html" -or -name "*.js" \) -exec sed -i 's/href="\//href="\/mirror\/ant-design-5\//g' {} +
+      #     find ./_site -type f \( -name "*.html" -or -name "*.js" \) -exec sed -i 's/src="\/umi/src="\/mirror\/ant-design-5\/umi/g' {} +
       - name: zip zite
         uses: montudor/action-zip@v1
         with:
